@@ -1,0 +1,13 @@
+Options -MultiViews
+
+RewriteEngine On
+
+RewriteBase /WebServicesProject/Converter
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+RewriteRule ^()$ index.php?url=$1 [QSA,L]
+RewriteRule ^/?([a-z]+)/(.*)$ index.php?$1=$2
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
