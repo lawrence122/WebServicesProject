@@ -5,12 +5,12 @@
         'region'  => 'us-east-1',
         'version' => 'latest',
         'credentials' => [
-            'key'    => "AKIAUTZKO3SN4LKU5QSM",
-            'secret' => "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",
+            'key'    => "",
+            'secret' => "",
         ]
     ]);
 
-    $bucket = 'cnkbucket';
+    $bucket = '';
     $key = 'Example.mp4';
 
     // Upload video
