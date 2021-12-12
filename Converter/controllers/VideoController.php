@@ -19,8 +19,8 @@ class VideoController {
 		$targetFile = basename($data['file']);
 		$targetPath = $data['file'];
 
-		$newFilename = pathinfo($targetFile, PATHINFO_FILENAME).'.avi';
-		$outputPath = "C:\\xampp\htdocs\Lab11\output" . DIRECTORY_SEPARATOR . $newFilename;
+		$newFilename = pathinfo($targetFile, PATHINFO_FILENAME) . "." . $data['targetFormat'];
+		$outputPath = "C:\\xampp\htdocs\WebServicesProject\Converter\output" . DIRECTORY_SEPARATOR . $newFilename;
 
 		$video = new VideoConversion();
 		$video->clientID = $client['clientID'];
@@ -34,7 +34,7 @@ class VideoController {
 		if($res != 0) {
 			error_log(var_export($out, true));
 			error_log(var_export($res, true));
-			echo "Error video not converted";
+			return "Error video not converted";
 		} else {					
 			// Save record to database
 			$video->outputFile = $outputPath;

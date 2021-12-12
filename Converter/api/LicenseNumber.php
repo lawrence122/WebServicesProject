@@ -4,7 +4,6 @@ class LicenseNumber {
     function generateLicenseNumber()
     {
         $licenseNumberLength = 10;
-        // $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $characters = '0123456789';
         $licenseNumber = "";
 
