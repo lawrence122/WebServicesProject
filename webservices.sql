@@ -33,7 +33,8 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `clientID` int(11) NOT NULL,
   `clientName` varchar(64) NOT NULL,
-  `licenseNumber` varchar(64) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `licenseNumber` int(10) NOT NULL,
   `licenseStartDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `licenseEndDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `licenseKey` varchar(256) NOT NULL
@@ -83,7 +84,8 @@ CREATE TABLE `videoconversion` (
 -- Indexes for table `client`
 --
 ALTER TABLE `client`
-  ADD PRIMARY KEY (`clientID`);
+  ADD PRIMARY KEY (`clientID`),
+  ADD UNIQUE KEY `licenseNumber` (`licenseNumber`);
 
 --
 -- Indexes for table `fileconversion`
