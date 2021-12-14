@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 05:01 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Dec 15, 2021 at 12:20 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,7 @@ CREATE TABLE `client` (
 
 DROP TABLE IF EXISTS `fileconversion`;
 CREATE TABLE `fileconversion` (
-  `conversionID` int(11) NOT NULL,
+  `fileID` int(11) NOT NULL,
   `clientID` int(11) NOT NULL,
   `requestDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `completionDate` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -66,7 +66,7 @@ CREATE TABLE `fileconversion` (
 
 DROP TABLE IF EXISTS `videoconversion`;
 CREATE TABLE `videoconversion` (
-  `conversionID` int(11) NOT NULL,
+  `videoID` int(11) NOT NULL,
   `clientID` int(11) NOT NULL,
   `requestDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `completionDate` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -91,13 +91,13 @@ ALTER TABLE `client`
 -- Indexes for table `fileconversion`
 --
 ALTER TABLE `fileconversion`
-  ADD PRIMARY KEY (`conversionID`);
+  ADD PRIMARY KEY (`fileID`);
 
 --
 -- Indexes for table `videoconversion`
 --
 ALTER TABLE `videoconversion`
-  ADD PRIMARY KEY (`conversionID`);
+  ADD PRIMARY KEY (`videoID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -113,13 +113,13 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `fileconversion`
 --
 ALTER TABLE `fileconversion`
-  MODIFY `conversionID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fileID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `videoconversion`
 --
 ALTER TABLE `videoconversion`
-  MODIFY `conversionID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `videoID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
