@@ -27,7 +27,7 @@ class VideoController {
 		$video->requestDate = date('Y-m-d H:i:sP');
 		$video->originalFormat = $data['originalFormat'];
 		$video->targetFormat = $data['targetFormat'];
-		$video->file = $data['file'];
+		$video->file = $targetFile;
 
 		exec('C:\ffmpeg -y -i '.$targetPath.' -c:v libx264 -c:a aac -pix_fmt yuv420p -movflags faststart -hide_banner '.$outputPath.' 2>&1', $out, $res);
 
@@ -37,7 +37,7 @@ class VideoController {
 			return "Error video not converted";
 		} else {					
 			// Save record to database
-			$video->outputFile = $outputPath;
+			$video->outputFile = $newFilename;
 			$video->completionDate = date('Y-m-d H:i:sP');
 			$video->insert();
 			return "Video successfully converted";

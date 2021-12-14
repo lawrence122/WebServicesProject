@@ -19,29 +19,25 @@ class FileController {
 		$targetFile = basename($data['file']);
 		$targetPath = $data['file'];
 
-		$newFilename = pathinfo($targetFile, PATHINFO_FILENAME).'.avi';
-		$outputPath = "C:\\xampp\htdocs\Lab11\output" . DIRECTORY_SEPARATOR . $newFilename;
+		$newFilename = pathinfo($targetFile, PATHINFO_FILENAME) . "." . $data['targetFormat'];
+		$outputPath = "C:\\xampp\htdocs\WebServicesProject\Converter\output" . DIRECTORY_SEPARATOR . $newFilename;
 
 		$video = new FileConversion();
 		$video->clientID = $client['clientID'];
 		$video->requestDate = date('Y-m-d H:i:sP');
 		$video->originalFormat = $data['originalFormat'];
 		$video->targetFormat = $data['targetFormat'];
-		$video->file = $data['file'];
+		$video->file = $targetFile;
 
-		// COMMAND TO BE CHANGED FOR PANDOC
-		// exec('C:\ffmpeg -y -i '.$targetPath.' -c:v libx264 -c:a aac -pix_fmt yuv420p -movflags faststart -hide_banner '.$outputPath.' 2>&1', $out, $res);
+		if (strtolower($data['targetFormat']) == "pdf") {
+			exec('C:\pandoc ' . $targetPath . " -o " . $outputPath . " --pdf-engine C:\wkhtmltopdf");
+		} else {
+			exec('C:\pandoc ' . $targetPath . " -o " . $outputPath);
+		}
 
-		// if($res != 0) {
-		// 	error_log(var_export($out, true));
-		// 	error_log(var_export($res, true));
-		// 	echo "Error File not converted";
-		// } else {					
-		// 	// Save record to database
-		// 	$video->outputFile = $outputPath;
-		// 	$video->completionDate = date('Y-m-d H:i:sP');
-		// 	$video->insert();
-		// 	return "File successfully converted";
-		// }
+		$video->outputFile = $newFilename;
+		$video->completionDate = date('Y-m-d H:i:sP');
+		$video->insert();
+		return "File successfully converted";
 	}
 }
