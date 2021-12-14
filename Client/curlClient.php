@@ -18,7 +18,7 @@
 	// POST file with curl client
 	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
 	$payload = json_encode(array('licenseNumber' => "2121011110",
-								'password_hash' => "passoword",
+								'password_hash' => "pasoword",
 								'licenseKey' => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJRCI6IjEiLCJleHAiOjE2NDQ2MDc2NjB9.SeP1Ox9ee3NWLDLf_4VkAltv6E7oIakhvTSFO6Zyaqg",
 								'originalFormat' => 'txt',
 								'targetFormat'   => 'pdf',
