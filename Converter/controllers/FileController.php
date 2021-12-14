@@ -4,8 +4,13 @@ require_once("../models/FileConversion.php");
 
 class FileController {
 	function getAll() {
-		$videos = new FileConversion();
-		return $videos->getAll();
+		$files = new FileConversion();
+		return $files->getAll();
+	}
+
+	function getAllFromClient($clientID) {
+		$files = new FileConversion();
+		return $files->getAllFromClient($clientID);
 	}
 
 	function insert($data) {
@@ -22,12 +27,12 @@ class FileController {
 		$newFilename = pathinfo($targetFile, PATHINFO_FILENAME) . "." . $data['targetFormat'];
 		$outputPath = "C:\\xampp\htdocs\WebServicesProject\Converter\output" . DIRECTORY_SEPARATOR . $newFilename;
 
-		$video = new FileConversion();
-		$video->clientID = $client['clientID'];
-		$video->requestDate = date('Y-m-d H:i:sP');
-		$video->originalFormat = $data['originalFormat'];
-		$video->targetFormat = $data['targetFormat'];
-		$video->file = $targetFile;
+		$file = new FileConversion();
+		$file->clientID = $client['clientID'];
+		$file->requestDate = date('Y-m-d H:i:sP');
+		$file->originalFormat = $data['originalFormat'];
+		$file->targetFormat = $data['targetFormat'];
+		$file->file = $targetFile;
 
 		if (strtolower($data['targetFormat']) == "pdf") {
 			exec('C:\pandoc ' . $targetPath . " -o " . $outputPath . " --pdf-engine C:\wkhtmltopdf");
@@ -35,9 +40,9 @@ class FileController {
 			exec('C:\pandoc ' . $targetPath . " -o " . $outputPath);
 		}
 
-		$video->outputFile = $newFilename;
-		$video->completionDate = date('Y-m-d H:i:sP');
-		$video->insert();
+		$file->outputFile = $outputPath;
+		$file->completionDate = date('Y-m-d H:i:sP');
+		$file->insert();
 		return "File successfully converted";
 	}
 }

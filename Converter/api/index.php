@@ -43,6 +43,7 @@
 	// url_parameter format:  array(1) { ["client"]=> string(3) "all" }
 	$keys = array_keys($request->url_parameters);
 	$values = array_values($request->url_parameters);
+	
 	if (!empty($keys)) {
 		$controllerName = ucfirst($keys[0]) . "Controller"; // ucfirst capitalize the first character to match controller name
 
@@ -129,12 +130,17 @@
 					$controller = new $controllerName();
 
 					if ($request->accept == "application/json") {
-						$response->payload = json_encode($controller->getAll());
+						var_dump($values[0]);
+						if (!is_null(ucfirst($values[0]))) {
+							$response->payload = json_encode($controller->getAllFromClient($values[0]));
+							return $response->payload;
+						} else {
+							$response->payload = json_encode($controller->getAll());
+							return $response->payload;
+						}
 					} else {
 						echo "Only accept JSON data";
 					}
-
-					echo $response->payload;
 					break;
 				
 				default:

@@ -8,6 +8,11 @@ class VideoController {
 		return $videos->getAll();
 	}
 
+	function getAllFromClient($clientID) {
+		$videos = new VideoController();
+		return $videos->getAllFromClient($clientID);
+	}
+
 	function insert($data) {
 		$client = new ClientController();
 		$client = $client->getClient($data['licenseNumber']);
@@ -37,7 +42,7 @@ class VideoController {
 			return "Error video not converted";
 		} else {					
 			// Save record to database
-			$video->outputFile = $newFilename;
+			$video->outputFile = $outputPath;
 			$video->completionDate = date('Y-m-d H:i:sP');
 			$video->insert();
 			return "Video successfully converted";
