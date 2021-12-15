@@ -11,8 +11,12 @@ class VideoController {
 	function getAllFromClient($licenseNumber) {
 		$client = new ClientController();
 		$client = $client->getClient($licenseNumber);
-		$videos = new VideoController();
-		return $videos->getAllFromClient($client['clientID']);
+		if (!is_null($client)) {
+			$videos = new VideoConversion();
+			return $videos->getAllFromClient($client['clientID']);
+		} else {
+			return "Invalid license number";
+		}
 	}
 
 	function insert($data) {

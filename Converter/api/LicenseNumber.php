@@ -23,6 +23,7 @@ class LicenseNumber {
 			$licenseNumber = $licenseNumber->generateLicenseNumber();
 			$client = $c->getClient($licenseNumber);
 		}
+        echo "Valid License number: " . $licenseNumber . "<br>";
 		return $licenseNumber;
 	}
 }

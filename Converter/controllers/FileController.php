@@ -8,9 +8,15 @@ class FileController {
 		return $files->getAll();
 	}
 
-	function getAllFromClient($clientID) {
-		$files = new FileConversion();
-		return $files->getAllFromClient($clientID);
+	function getAllFromClient($licenseNumber) {
+		$client = new ClientController();
+		$client = $client->getClient($licenseNumber);
+		if (!is_null($client)) {
+			$files = new FileConversion();
+			return $files->getAllFromClient($client['clientID']);
+		} else {
+			return "Invalid license number";
+		}
 	}
 
 	function insert($data) {

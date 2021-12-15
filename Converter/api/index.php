@@ -48,21 +48,22 @@
 											// Registers a client
 											$licenseNumber = new LicenseNumber();
 											$licenseNumber = $licenseNumber->generateLicenseNumber();
+											echo "Index License number: " . $licenseNumber . "<br>";
 
 											$c = new ClientController();
 											$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
 											$client = $c->getClient($licenseNumber);
+											var_dump($client);
 
-											updateKey($client['clientID'], $licenseNumber);
-											echo "Client created " . $data['clientName'] 
-													. ". Here is your license number: " 
-													. $licenseNumber . "<br>It is valid for a month.";
+											// updateKey($client['clientID'], $licenseNumber);
+											// echo "Client created " . $data['clientName'] 
+											// 		. ". Here is your license number: " 
+											// 		. $licenseNumber . "<br>It is valid for a month.";
 											break;
 										case 'Password':
 											// Updates user password
 											$client = new ClientController();
-											$client = $client->UpdatePassword($data['licenseNumber'], $data['password_hash']);
-											if (!is_null($client) && !empty($client)) {
+											if ($client->UpdatePassword($data['licenseNumber'], $data['password_hash'])) {
 												echo "Password Updated.";
 											} else {
 												echo "Invalid License Number.";
@@ -120,15 +121,15 @@
 					$controller = new $controllerName();
 
 					if ($request->accept == "application/json") {
-						echo "Values 1: " . $values[0] . "<br>";
-						// if (!is_null(ucfirst($values[0]) && !empty($values[0]))) {
-						// 	echo "Values 2: " . $values[0] . "<br>";
-						// 	$response->payload = json_encode($controller->getAllFromClient($values[0]));
-						// 	echo $response->payload;
-						// } else {
+						// echo "Values 1: " . $values[0] . "<br>";
+						if (!is_null(ucfirst($values[0]) && !empty($values[0]))) {
+							// echo "Values 2: " . $values[0] . "<br>";
+							$response->payload = json_encode($controller->getAllFromClient($values[0]));
+							echo $response->payload;
+						} else {
 							$response->payload = json_encode($controller->getAll());
 							echo $response->payload;
-						// }
+						}
 					} else {
 						echo "Only accept JSON data";
 					}

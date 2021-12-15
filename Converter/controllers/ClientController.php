@@ -11,6 +11,7 @@ class ClientController {
 		$client = new Client();
 		$client->clientName = $clientName;
 		$client->licenseNumber = $licenseNumber;
+		echo "Insert License number: " . $licenseNumber . "<br>";
 		$client->password_hash = $password_hash;
 		$client->insert();
 	}
@@ -26,11 +27,18 @@ class ClientController {
 	}
 
 	function getClient($licenseNumber) {
+		// echo "GetClient<br>";
+		// echo "GetClient License number 1: " . $licenseNumber . "<br>Client: ";
 		$client = new Client();
 		$client = $client->getClient($licenseNumber);
+		// var_dump($client);
+		// echo "<br>";
 		if (empty($client)) {
+			// echo "Not found<br>";
 			return null;
 		} else {
+			// echo "GetClient License number 2: " . $client['licenseNumber'] . "<br>";
+			// echo "found<br>";
 			return $client;
 		}
 	}
@@ -52,8 +60,9 @@ class ClientController {
 			$client->clientID = $c['clientID'];
 			$client->password_hash = $password_hash;
 			$client->updatePassword();
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 }
