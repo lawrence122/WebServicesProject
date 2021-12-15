@@ -1,5 +1,5 @@
 <?php
-require_once("../models/Client.php");
+require_once("../controllers/ClientController.php");
 require_once("../models/VideoConversion.php");
 
 class VideoController {
@@ -8,9 +8,11 @@ class VideoController {
 		return $videos->getAll();
 	}
 
-	function getAllFromClient($clientID) {
+	function getAllFromClient($licenseNumber) {
+		$client = new ClientController();
+		$client = $client->getClient($licenseNumber);
 		$videos = new VideoController();
-		return $videos->getAllFromClient($clientID);
+		return $videos->getAllFromClient($client['clientID']);
 	}
 
 	function insert($data) {
@@ -34,12 +36,12 @@ class VideoController {
 		$video->targetFormat = $data['targetFormat'];
 		$video->file = $targetFile;
 
-		exec('C:\ffmpeg -y -i '.$targetPath.' -c:v libx264 -c:a aac -pix_fmt yuv420p -movflags faststart -hide_banner '.$outputPath.' 2>&1', $out, $res);
+		exec('C:\ffmpeg -i '.$targetPath.' '.$outputPath, $out, $res);
 
 		if($res != 0) {
 			error_log(var_export($out, true));
 			error_log(var_export($res, true));
-			return "Error video not converted";
+			return "Error!! video not converted";
 		} else {					
 			// Save record to database
 			$video->outputFile = $outputPath;

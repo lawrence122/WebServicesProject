@@ -15,25 +15,12 @@
 		}
 	}
 
-	function checkLicense($licenseNumber)
-	{
-		$c = new ClientController();
-		$client = $c->getClient($licenseNumber);
-		while (!is_null($client)) {
-			$licenseNumber = new LicenseNumber();
-			$licenseNumber = $licenseNumber->generateLicenseNumber();
-			$client = $c->getClient($licenseNumber);
-		}
-		return $licenseNumber;
-	}
-
 	function updateKey($clientID, $licenseNumber)
 	{
 		$jwt = new JWT();
 		$jwt = $jwt->encode($clientID, $licenseNumber, strtotime("+1 Months"));
 		$c = new ClientController();
 		$c->UpdateKey($licenseNumber, $jwt, date("Y-m-d h:i:sa"), date("Y-m-d h:i:sa", strtotime("+1 Months")));
-		return $jwt;
 	}
 
 	// $request = new \api\Request();
@@ -43,7 +30,7 @@
 	// url_parameter format:  array(1) { ["client"]=> string(3) "all" }
 	$keys = array_keys($request->url_parameters);
 	$values = array_values($request->url_parameters);
-	
+
 	if (!empty($keys)) {
 		$controllerName = ucfirst($keys[0]) . "Controller"; // ucfirst capitalize the first character to match controller name
 
@@ -61,7 +48,6 @@
 											// Registers a client
 											$licenseNumber = new LicenseNumber();
 											$licenseNumber = $licenseNumber->generateLicenseNumber();
-											$licenseNumber = checkLicense($licenseNumber);
 
 											$c = new ClientController();
 											$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
@@ -75,8 +61,12 @@
 										case 'Password':
 											// Updates user password
 											$client = new ClientController();
-											$client->UpdatePassword($data['licenseNumber'], $data['password_hash']);
-											echo "Password Updated.";
+											$client = $client->UpdatePassword($data['licenseNumber'], $data['password_hash']);
+											if (!is_null($client) && !empty($client)) {
+												echo "Password Updated.";
+											} else {
+												echo "Invalid License Number.";
+											}
 											break;
 										default:
 											echo "Invalid URL";
@@ -130,14 +120,15 @@
 					$controller = new $controllerName();
 
 					if ($request->accept == "application/json") {
-						var_dump($values[0]);
-						if (!is_null(ucfirst($values[0]))) {
-							$response->payload = json_encode($controller->getAllFromClient($values[0]));
-							return $response->payload;
-						} else {
+						echo "Values 1: " . $values[0] . "<br>";
+						// if (!is_null(ucfirst($values[0]) && !empty($values[0]))) {
+						// 	echo "Values 2: " . $values[0] . "<br>";
+						// 	$response->payload = json_encode($controller->getAllFromClient($values[0]));
+						// 	echo $response->payload;
+						// } else {
 							$response->payload = json_encode($controller->getAll());
-							return $response->payload;
-						}
+							echo $response->payload;
+						// }
 					} else {
 						echo "Only accept JSON data";
 					}

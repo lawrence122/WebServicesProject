@@ -12,7 +12,7 @@ class ClientController {
 		$client->clientName = $clientName;
 		$client->licenseNumber = $licenseNumber;
 		$client->password_hash = $password_hash;
-		return $client->insert();
+		$client->insert();
 	}
 
 	function getClientID($licenseKey) {
@@ -45,11 +45,16 @@ class ClientController {
 	}
 
 	function UpdatePassword($licenseNumber, $password_hash) {
-		$c = $this->getClient($licenseNumber);
-		$client = new Client();
-		$client->clientID = $c['clientID'];
-		$client->password_hash = $password_hash;
-		$client->updatePassword();
+		$c = new ClientController();
+		$c = $c->getClient($licenseNumber);
+		if (!is_null($c)) {
+			$client = new Client();
+			$client->clientID = $c['clientID'];
+			$client->password_hash = $password_hash;
+			$client->updatePassword();
+		} else {
+			return null;
+		}
 	}
 }
 ?>

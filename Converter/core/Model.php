@@ -5,10 +5,7 @@ class Model {
 
 	public function __construct(){
 		$host = "localhost";
-		// THIS IS FOR TEST. TO BE DELETED LATER
-		$DBName = "videoconversion";
-		// THIS IS THE ACTUAL DATABASE
-		// $DBName = "webservices";
+		$DBName = "webservices";
 		$username = "root";
 		$password = "";
 

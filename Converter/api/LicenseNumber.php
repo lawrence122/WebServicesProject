@@ -11,7 +11,19 @@ class LicenseNumber {
             $licenseNumber .= $characters[rand(0, strlen($characters) - 1)];
         }
 
-        return $licenseNumber;
+        return $this->checkLicense($licenseNumber);
     }
+
+    function checkLicense($licenseNumber)
+	{
+		$c = new ClientController();
+		$client = $c->getClient($licenseNumber);
+		while (!is_null($client)) {
+			$licenseNumber = new LicenseNumber();
+			$licenseNumber = $licenseNumber->generateLicenseNumber();
+			$client = $c->getClient($licenseNumber);
+		}
+		return $licenseNumber;
+	}
 }
 ?>

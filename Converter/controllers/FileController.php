@@ -1,5 +1,5 @@
 <?php
-require_once("../models/Client.php");
+require_once("../controllers/ClientController.php");
 require_once("../models/FileConversion.php");
 
 class FileController {
