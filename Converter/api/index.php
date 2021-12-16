@@ -34,6 +34,7 @@
 		$controllerName = ucfirst($keys[0]) . "Controller"; // ucfirst capitalize the first character to match controller name
 
 		if (class_exists($controllerName)) {
+
 			switch ($request->verb) {
 				case 'POST':
 					if ($request->contentType == "application/json") {
@@ -70,6 +71,15 @@
 										$client = new ClientController();
 										if ($client->UpdateName($data['licenseNumber'], $data['clientName'])) {
 											echo "Name Updated.";
+										} else {
+											echo "Invalid License Number.";
+										}
+										break;
+									case 'Delete':
+										// Delete client
+										$client = new ClientController();
+										if ($client->Delete($data['licenseNumber'])) {
+											echo "Client successfully deleted.";
 										} else {
 											echo "Invalid License Number.";
 										}

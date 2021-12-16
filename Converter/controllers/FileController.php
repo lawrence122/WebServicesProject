@@ -51,4 +51,17 @@ class FileController {
 		$file->insert();
 		return "File successfully converted";
 	}
+
+	function Delete($licenseNumber) {
+		$client = new ClientController();
+		$client = $client->getClient($licenseNumber);
+
+		if (!is_null($client)) {
+			$files = new FileConversion();
+			$files->clientID = $client['clientID'];
+			$files->deleteAll();
+		} else {
+			return "Invalid license number";
+		}
+	}
 }

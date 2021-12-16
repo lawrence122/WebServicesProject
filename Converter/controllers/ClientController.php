@@ -71,5 +71,25 @@ class ClientController {
 			return false;
 		}
 	}
+
+	function Delete($licenseNumber) {
+		$files = new FileController();
+		$videos = new VideoController();
+
+		$files->Delete($licenseNumber);
+		$videos->Delete($licenseNumber);
+
+		$c = new ClientController();
+		$c = $c->getClient($licenseNumber);
+
+		if (!is_null($c)) {
+			$client = new Client();
+			$client->clientID = $c['clientID'];
+			$client->delete();
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

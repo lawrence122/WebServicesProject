@@ -54,4 +54,17 @@ class VideoController {
 			return "Video successfully converted";
 		}
 	}
+
+	function Delete($licenseNumber) {
+		$client = new ClientController();
+		$client = $client->getClient($licenseNumber);
+
+		if (!is_null($client)) {
+			$videos = new VideoConversion();
+			$videos->clientID = $client['clientID'];
+			$videos->deleteAll();
+		} else {
+			return "Invalid license number";
+		}
+	}
 }

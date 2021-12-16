@@ -58,6 +58,11 @@ class Client {
 		$stmt->execute(['clientName'=>$this->clientName,'clientID'=>$this->clientID]);
 	}
 
+	public function delete() {
+		$stmt = $this->Model::$connection->prepare("DELETE FROM client WHERE clientID = :clientID");
+		$stmt->execute(['clientID'=>$this->clientID]);
+	}
+
 	// public function failedLogin(){
 	// 	$stmt = self::$connection->prepare("UPDATE user SET failed_login_attempts = failed_login_attempts + 1 WHERE user_id = :user_id");
 	// 	$stmt->execute(['user_id'=>$this->user_id]);

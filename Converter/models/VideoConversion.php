@@ -8,7 +8,7 @@ class VideoConversion {
 	}
 
 	public function find($conversionID){
-		$stmt = $this->Model::$connection->prepare("SELECT * FROM videoconversion WHERE conversionID=:conversionID");
+		$stmt = $this->Model::$connection->prepare("SELECT * FROM videoconversion WHERE conversionID = :conversionID");
 		$stmt->execute(['conversionID'=>$conversionID]);
 		return $stmt->fetch();
 	}
@@ -20,7 +20,7 @@ class VideoConversion {
 	}
 
 	public function getAllFromClient($clientID){
-		$stmt = $this->Model::$connection->prepare("SELECT * FROM videoconversion WHERE clientID=:clientID");
+		$stmt = $this->Model::$connection->prepare("SELECT * FROM videoconversion WHERE clientID = :clientID");
 		$stmt->execute(['clientID'=>$clientID]);
 		return $stmt->fetchAll();
 	}
@@ -33,5 +33,10 @@ class VideoConversion {
 		return $stmt->execute(['clientID'=>$this->clientID, 'requestDate'=>$this->requestDate, 
 								'completionDate'=>$this->completionDate, 'originalFormat'=>$this->originalFormat, 
 								'targetFormat'=>$this->targetFormat, 'file'=>$this->file, 'outputFile'=>$this->outputFile]);		
+	}
+
+	public function deleteAll() {
+		$stmt = $this->Model::$connection->prepare("DELETE from videoconversion WHERE clientID = :clientID");
+		$stmt->execute(['clientID'=>$this->clientID]);
 	}
 }
