@@ -17,7 +17,7 @@
 	// Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
 	// $password_hash = password_hash("something", PASSWORD_DEFAULT);
-	// $payload = json_encode(array('clientName' => "TekName", 'licenseNumber' => "851697467", 'password_hash' => $password_hash));
+	// $payload = json_encode(array('licenseNumber' => "851697467", 'password_hash' => $password_hash));
 
 	// POST file with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
