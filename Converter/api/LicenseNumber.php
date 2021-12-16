@@ -3,7 +3,7 @@
 class LicenseNumber {
     function generateLicenseNumber()
     {
-        $licenseNumberLength = 10;
+        $licenseNumberLength = 9;
         $characters = '0123456789';
         $licenseNumber = "";
 
@@ -23,7 +23,6 @@ class LicenseNumber {
 			$licenseNumber = $licenseNumber->generateLicenseNumber();
 			$client = $c->getClient($licenseNumber);
 		}
-        echo "Valid License number: " . $licenseNumber . "<br>";
 		return $licenseNumber;
 	}
 }

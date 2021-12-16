@@ -47,17 +47,15 @@
 										// Registers a client
 										$licenseNumber = new LicenseNumber();
 										$licenseNumber = $licenseNumber->generateLicenseNumber();
-										echo "Index License number: " . $licenseNumber . "<br>";
 
 										$c = new ClientController();
 										$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
 										$client = $c->getClient($licenseNumber);
-										var_dump($client);
 
-										// updateKey($client['clientID'], $licenseNumber);
-										// echo "Client created " . $data['clientName'] 
-										// 		. ". Here is your license number: " 
-										// 		. $licenseNumber . "<br>It is valid for a month.";
+										updateKey($client['clientID'], $licenseNumber);
+										echo "Client created " . $data['clientName'] 
+												. ". Here is your license number: " 
+												. $licenseNumber . "<br>It is valid for a month.";
 										break;
 									case 'Password':
 										// Updates user password
