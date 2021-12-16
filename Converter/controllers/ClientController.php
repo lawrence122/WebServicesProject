@@ -57,5 +57,19 @@ class ClientController {
 			return false;
 		}
 	}
+
+	function UpdateName($licenseNumber, $clientName) {
+		$c = new ClientController();
+		$c = $c->getClient($licenseNumber);
+		if (!is_null($c)) {
+			$client = new Client();
+			$client->clientID = $c['clientID'];
+			$client->clientName = $clientName;
+			$client->updateName();
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

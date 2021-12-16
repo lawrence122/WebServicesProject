@@ -53,6 +53,11 @@ class Client {
 		$stmt->execute(['password_hash'=>$this->password_hash,'clientID'=>$this->clientID]);
 	}
 
+	public function updateName(){
+		$stmt = $this->Model::$connection->prepare("UPDATE client SET clientName = :clientName WHERE clientID = :clientID");
+		$stmt->execute(['clientName'=>$this->clientName,'clientID'=>$this->clientID]);
+	}
+
 	// public function failedLogin(){
 	// 	$stmt = self::$connection->prepare("UPDATE user SET failed_login_attempts = failed_login_attempts + 1 WHERE user_id = :user_id");
 	// 	$stmt->execute(['user_id'=>$this->user_id]);

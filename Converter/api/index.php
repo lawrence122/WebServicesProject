@@ -65,6 +65,15 @@
 											echo "Invalid License Number.";
 										}
 										break;
+									case 'changeName':
+										// Updates client name
+										$client = new ClientController();
+										if ($client->UpdateName($data['licenseNumber'], $data['clientName'])) {
+											echo "Name Updated.";
+										} else {
+											echo "Invalid License Number.";
+										}
+										break;
 									default:
 										echo "Invalid URL";
 										break;
