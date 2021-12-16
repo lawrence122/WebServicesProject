@@ -23,7 +23,6 @@
 		$c->UpdateKey($licenseNumber, $jwt, date("Y-m-d h:i:sa"), date("Y-m-d h:i:sa", strtotime("+1 Months")));
 	}
 
-	// $request = new \api\Request();
 	$request = new Request();
 	$response = new Response();
 
@@ -83,7 +82,6 @@
 										
 										// Provide a new valide license if client doesn't have one or the one the client has is invalid
 										if (is_null($client['licenseKey']) || is_null($jwt) || $client['licenseEndDate'] < date("Y-m-d h:i:sa")) {
-											// $data['licenseKey'] = updateKey($client['clientID'], $licenseNumber);
 											$client = $c->getClient($client['licenseNumber']);
 											echo "License Updated<br>";
 										}
