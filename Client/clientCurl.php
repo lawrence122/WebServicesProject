@@ -20,7 +20,7 @@
 	// $payload = json_encode(array('licenseNumber' => "64908065", 'password_hash' => $password_hash));
 
 	// Change name
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/name');
 	// $payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "64908065"));
 
 	// Delete client
