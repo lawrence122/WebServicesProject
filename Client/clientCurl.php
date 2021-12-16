@@ -19,6 +19,10 @@
 	// $password_hash = password_hash("something", PASSWORD_DEFAULT);
 	// $payload = json_encode(array('licenseNumber' => "851697467", 'password_hash' => $password_hash));
 
+	// Change name
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
+	// $payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "851697467");
+
 	// POST file with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
 	// $payload = json_encode(array('licenseNumber' => "851697467",
