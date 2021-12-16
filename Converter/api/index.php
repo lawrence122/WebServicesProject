@@ -42,39 +42,35 @@
 						if(is_array($data)){
 							if ($controllerName == "ClientController") {
 								// Check the url parameters
-								if (!is_null(ucfirst($values[0]))) {
-									switch (ucfirst($values[0])) {
-										case "Create":
-											// Registers a client
-											$licenseNumber = new LicenseNumber();
-											$licenseNumber = $licenseNumber->generateLicenseNumber();
-											echo "Index License number: " . $licenseNumber . "<br>";
+								switch (ucfirst($values[0])) {
+									case "Create":
+										// Registers a client
+										$licenseNumber = new LicenseNumber();
+										$licenseNumber = $licenseNumber->generateLicenseNumber();
+										echo "Index License number: " . $licenseNumber . "<br>";
 
-											$c = new ClientController();
-											$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
-											$client = $c->getClient($licenseNumber);
-											var_dump($client);
+										$c = new ClientController();
+										$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
+										$client = $c->getClient($licenseNumber);
+										var_dump($client);
 
-											// updateKey($client['clientID'], $licenseNumber);
-											// echo "Client created " . $data['clientName'] 
-											// 		. ". Here is your license number: " 
-											// 		. $licenseNumber . "<br>It is valid for a month.";
-											break;
-										case 'Password':
-											// Updates user password
-											$client = new ClientController();
-											if ($client->UpdatePassword($data['licenseNumber'], $data['password_hash'])) {
-												echo "Password Updated.";
-											} else {
-												echo "Invalid License Number.";
-											}
-											break;
-										default:
-											echo "Invalid URL";
-											break;
-									}
-								} else {
-									echo "Please specify what you want to do.";
+										// updateKey($client['clientID'], $licenseNumber);
+										// echo "Client created " . $data['clientName'] 
+										// 		. ". Here is your license number: " 
+										// 		. $licenseNumber . "<br>It is valid for a month.";
+										break;
+									case 'Password':
+										// Updates user password
+										$client = new ClientController();
+										if ($client->UpdatePassword($data['licenseNumber'], $data['password_hash'])) {
+											echo "Password Updated.";
+										} else {
+											echo "Invalid License Number.";
+										}
+										break;
+									default:
+										echo "Invalid URL";
+										break;
 								}
 							} else {
 								// Conversion
@@ -121,14 +117,14 @@
 					$controller = new $controllerName();
 
 					if ($request->accept == "application/json") {
-						// echo "Values 1: " . $values[0] . "<br>";
-						if (!is_null(ucfirst($values[0]) && !empty($values[0]))) {
-							// echo "Values 2: " . $values[0] . "<br>";
-							$response->payload = json_encode($controller->getAllFromClient($values[0]));
-							echo $response->payload;
-						} else {
-							$response->payload = json_encode($controller->getAll());
-							echo $response->payload;
+						switch ($values[0]) {
+							case "":
+								echo "Specify a license number";
+								break;
+							default:
+								$response->payload = json_encode($controller->getAllFromClient($values[0]));
+								echo $response->payload;
+								break;
 						}
 					} else {
 						echo "Only accept JSON data";
