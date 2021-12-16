@@ -10,7 +10,7 @@
 	// 					));
 
 	// Create user
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create/');
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
 	$password_hash = password_hash("passoword", PASSWORD_DEFAULT);
 	$payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
