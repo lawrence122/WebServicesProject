@@ -1,13 +1,13 @@
 <?php
 
 	// POST video with curl client
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	$payload = json_encode(array('licenseNumber' => "705485387",
-								'password_hash' => "passoword",
-								'originalFormat' => 'mp4',
-								'targetFormat'   => 'ogg',
-								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\file.mp4'
-						));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
+	// $payload = json_encode(array('licenseNumber' => "705485387",
+	// 							'password_hash' => "passoword",
+	// 							'originalFormat' => 'mp4',
+	// 							'targetFormat'   => 'ogg',
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\file.mp4'
+	// 					));
 
 	// Create user
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
@@ -20,8 +20,8 @@
 	// $payload = json_encode(array('licenseNumber' => "851697467", 'password_hash' => $password_hash));
 
 	// Change name
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
-	// $payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "851697467");
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
+	$payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "130480399"));
 
 	// POST file with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
