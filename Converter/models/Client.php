@@ -29,7 +29,7 @@ class Client {
 		return $stmt->fetch();
 	}
 
-	public function insert(){
+	public function insert() {
 		$stmt = $this->Model::$connection->prepare("INSERT INTO client(clientName, licenseNumber, password_hash) 
 											VALUES (:clientName, :licenseNumber, :password_hash)");
 
@@ -48,12 +48,12 @@ class Client {
 						'licenseEndDate' => $this->licenseEndDate]);
 	}
 
-	public function updatePassword(){
+	public function updatePassword() {
 		$stmt = $this->Model::$connection->prepare("UPDATE client SET password_hash=:password_hash WHERE clientID=:clientID");
 		$stmt->execute(['password_hash'=>$this->password_hash,'clientID'=>$this->clientID]);
 	}
 
-	public function updateName(){
+	public function updateName() {
 		$stmt = $this->Model::$connection->prepare("UPDATE client SET clientName = :clientName WHERE clientID = :clientID");
 		$stmt->execute(['clientName'=>$this->clientName,'clientID'=>$this->clientID]);
 	}
