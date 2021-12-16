@@ -1,19 +1,18 @@
 <?php
 
 	// POST video with curl client
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	// $payload = json_encode(array('licenseNumber' => "851697467",
-	// 							'password_hash' => "something",
-	// 							'licenseKey' => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJRCI6IjYiLCJleHAiOjE2NDIyODQwMTJ9.Ne6rc_sAULL3EGzLO5JsFv7IdHYn8hWY01XHu0yUmus",
-	// 							'originalFormat' => 'avi',
-	// 							'targetFormat'   => 'mp3',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.avi'
-	// 					));
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
+	$payload = json_encode(array('licenseNumber' => "705485387",
+								'password_hash' => "passoword",
+								'originalFormat' => 'mp3',
+								'targetFormat'   => 'ogg',
+								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\sample.mp3'
+						));
 
 	// Create user
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
-	$password_hash = password_hash("passoword", PASSWORD_DEFAULT);
-	$payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
+	// $password_hash = password_hash("passoword", PASSWORD_DEFAULT);
+	// $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
 	// Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
@@ -24,7 +23,6 @@
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
 	// $payload = json_encode(array('licenseNumber' => "851697467",
 	// 							'password_hash' => "something",
-	// 							'licenseKey' => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRJRCI6IjYiLCJleHAiOjE2NDIyODQwMTJ9.Ne6rc_sAULL3EGzLO5JsFv7IdHYn8hWY01XHu0yUmus",
 	// 							'originalFormat' => 'md',
 	// 							'targetFormat'   => 'tiff',
 	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.md'

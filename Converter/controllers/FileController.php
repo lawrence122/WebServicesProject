@@ -24,7 +24,7 @@ class FileController {
 		$client = $client->getClient($data['licenseNumber']);
 
 		if (is_null($client)) {
-			return "Invalid license key";
+			return "Invalid license number";
 		}
 
 		$targetFile = basename($data['file']);

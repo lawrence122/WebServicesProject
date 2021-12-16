@@ -83,19 +83,14 @@
 										
 										// Provide a new valide license if client doesn't have one or the one the client has is invalid
 										if (is_null($client['licenseKey']) || is_null($jwt) || $client['licenseEndDate'] < date("Y-m-d h:i:sa")) {
-											$data['licenseKey'] = updateKey($client['clientID'], $licenseNumber);
+											// $data['licenseKey'] = updateKey($client['clientID'], $licenseNumber);
 											$client = $c->getClient($client['licenseNumber']);
 											echo "License Updated<br>";
 										}
 
-										// Check if given license key mathces license saved in database
-										if ($client['licenseKey'] == $data['licenseKey']) {
-											$controller = new $controllerName();
-											$response->payload = json_encode($controller->insert($data));
-											echo $response->payload;
-										} else {
-											echo "Invalid license key";
-										}
+										$controller = new $controllerName();
+										$response->payload = json_encode($controller->insert($data));
+										echo $response->payload;
 									} else {
 										echo "Wrong password.";
 									}
