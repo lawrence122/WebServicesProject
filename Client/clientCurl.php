@@ -4,9 +4,9 @@
 	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
 	$payload = json_encode(array('licenseNumber' => "705485387",
 								'password_hash' => "passoword",
-								'originalFormat' => 'mp3',
+								'originalFormat' => 'mp4',
 								'targetFormat'   => 'ogg',
-								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\sample.mp3'
+								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\file.mp4'
 						));
 
 	// Create user
