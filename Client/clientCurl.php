@@ -10,9 +10,9 @@
 	// 					));
 
 	// Create user
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
-	// $password_hash = password_hash("passoword", PASSWORD_DEFAULT);
-	// $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
+	$password_hash = password_hash("passoword", PASSWORD_DEFAULT);
+	$payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
 	// Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
@@ -20,8 +20,8 @@
 	// $payload = json_encode(array('licenseNumber' => "851697467", 'password_hash' => $password_hash));
 
 	// Change name
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
-	$payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "130480399"));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/changeName');
+	// $payload = json_encode(array('clientName' => "New Name", 'licenseNumber' => "130480399"));
 
 	// POST file with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
