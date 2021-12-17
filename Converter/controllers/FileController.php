@@ -61,14 +61,14 @@ class FileController {
 		}
 	}
 
-	function Delete($conversionID) {
+	function delete($conversionID) {
 		$file = new FileConversion();
 		$file->conversionID = $conversionID;
 		$file->delete();
 		return "File successfully deleted";
 	}
 
-	function DeleteWithLicense($licenseNumber) {
+	function deleteWithLicense($licenseNumber) {
 		$client = new ClientController();
 		$client = $client->getClient($licenseNumber);
 
