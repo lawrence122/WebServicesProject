@@ -65,14 +65,14 @@ class VideoController {
 		}
 	}
 
-	function Delete($conversionID) {
+	function delete($conversionID) {
 		$video = new VideoConversion();
 		$video->conversionID = $conversionID;
 		$video->delete();
 		return "Video successfully deleted";
 	}
 
-	function DeleteWithLicense($licenseNumber) {
+	function deleteWithLicense($licenseNumber) {
 		$client = new ClientController();
 		$client = $client->getClient($licenseNumber);
 

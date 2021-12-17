@@ -121,7 +121,7 @@
 				case 'DELETE':
 					// Delete client, file, or video
 					$controller = new $controllerName();
-					$response->payload = $controller->Delete($values[0]);
+					$response->payload = $controller->delete($values[0]);
 					echo $response->payload;
 					break;
 
