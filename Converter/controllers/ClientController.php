@@ -76,8 +76,12 @@ class ClientController {
 		$files = new FileController();
 		$videos = new VideoController();
 
-		$files->Delete($licenseNumber);
-		$videos->Delete($licenseNumber);
+		if (!empty($files->getAllFromClient($licenseNumber))) {
+			$files->DeleteWithLicense($licenseNumber);
+		}
+		if (!empty($videos->getAllFromClient($licenseNumber))) {
+			$videos->DeleteWithLicense($licenseNumber);
+		}
 
 		$c = new ClientController();
 		$c = $c->getClient($licenseNumber);
@@ -86,9 +90,9 @@ class ClientController {
 			$client = new Client();
 			$client->clientID = $c['clientID'];
 			$client->delete();
-			return true;
+			return "Client successfully deleted";
 		} else {
-			return false;
+			return "This client does not exist";
 		}
 	}
 }

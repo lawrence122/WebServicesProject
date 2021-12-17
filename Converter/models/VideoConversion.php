@@ -35,6 +35,11 @@ class VideoConversion {
 								'targetFormat'=>$this->targetFormat, 'file'=>$this->file, 'outputFile'=>$this->outputFile]);		
 	}
 
+	public function delete() {
+		$stmt = $this->Model::$connection->prepare("DELETE from videoconversion WHERE conversionID = :conversionID");
+		$stmt->execute(['conversionID'=>$this->conversionID]);
+	}
+
 	public function deleteAll() {
 		$stmt = $this->Model::$connection->prepare("DELETE from videoconversion WHERE clientID = :clientID");
 		$stmt->execute(['clientID'=>$this->clientID]);

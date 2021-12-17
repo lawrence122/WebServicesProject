@@ -75,15 +75,6 @@
 											echo "Invalid License Number.";
 										}
 										break;
-									case 'Delete':
-										// Delete client
-										$client = new ClientController();
-										if ($client->Delete($data['licenseNumber'])) {
-											echo "Client successfully deleted.";
-										} else {
-											echo "Invalid License Number.";
-										}
-										break;
 									default:
 										echo "Invalid URL";
 										break;
@@ -139,6 +130,13 @@
 					} else {
 						echo "Only accept JSON data";
 					}
+					break;
+
+				case 'DELETE':
+					// Delete client, file, or video
+					$controller = new $controllerName();
+					$response->payload = $controller->Delete($values[0]);
+					echo $response->payload;
 					break;
 				
 				default:

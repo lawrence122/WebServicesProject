@@ -49,10 +49,17 @@ class FileController {
 		$file->outputFile = $outputPath;
 		$file->completionDate = date('Y-m-d H:i:sP');
 		$file->insert();
-		return "<a href='".$outputPath."' download> Click here to download";
+		return "<a href='".$outputPath."' download> Click here to download</a>";
 	}
 
-	function Delete($licenseNumber) {
+	function Delete($conversionID) {
+		$file = new FileConversion();
+		$file->conversionID = $conversionID;
+		$file->delete();
+		return "File successfully deleted";
+	}
+
+	function DeleteWithLicense($licenseNumber) {
 		$client = new ClientController();
 		$client = $client->getClient($licenseNumber);
 
