@@ -15,16 +15,6 @@ class ClientController {
 		$client->insert();
 	}
 
-	function getClientID($licenseKey) {
-		$client = new Client();
-		$client = $client->getClientID($licenseKey);
-		if (empty($client)) {
-			return false;
-		} else {
-			return $client['clientID'];
-		}
-	}
-
 	function getClient($licenseNumber) {
 		$client = new Client();
 		$client = $client->getClient($licenseNumber);

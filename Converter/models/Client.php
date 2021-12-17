@@ -17,12 +17,6 @@ class Client {
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	function getClientID($licenseKey) {
-		$stmt = $this->Model::$connection->prepare("SELECT clientID FROM client WHERE licenseKey=:licenseKey");
-		$stmt->execute(['licenseKey'=>$licenseKey]);
-		return $stmt->fetch();
-	}
-
 	public function getClient($licenseNumber) {
 		$stmt = $this->Model::$connection->prepare("SELECT * FROM client WHERE licenseNumber = :licenseNumber");
 		$stmt->execute(['licenseNumber'=>$licenseNumber]);
