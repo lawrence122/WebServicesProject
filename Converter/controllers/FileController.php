@@ -49,7 +49,7 @@ class FileController {
 		$file->outputFile = $outputPath;
 		$file->completionDate = date('Y-m-d H:i:sP');
 		$file->insert();
-		return "File successfully converted";
+		return $outputPath;
 	}
 
 	function Delete($licenseNumber) {

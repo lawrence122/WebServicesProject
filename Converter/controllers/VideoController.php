@@ -51,7 +51,7 @@ class VideoController {
 			$video->outputFile = $outputPath;
 			$video->completionDate = date('Y-m-d H:i:sP');
 			$video->insert();
-			return "Video successfully converted";
+			return $outputPath;
 		}
 	}
 

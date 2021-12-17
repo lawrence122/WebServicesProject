@@ -1,18 +1,18 @@
 <?php
 
 	// POST video with curl client
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	// $payload = json_encode(array('licenseNumber' => "27313093",
-	// 							'password_hash' => "passoword",
-	// 							'originalFormat' => 'mp3',
-	// 							'targetFormat'   => 'ogg',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\sample.mp3'
-	// 					));
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
+	$payload = json_encode(array('licenseNumber' => "130480399",
+								'password_hash' => "passoword",
+								'originalFormat' => 'md',
+								'targetFormat'   => 'txt',
+								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.md'
+						));
 
 	// Create user
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
-	$password_hash = password_hash("passoword", PASSWORD_DEFAULT);
-	$payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
+	// $password_hash = password_hash("passoword", PASSWORD_DEFAULT);
+	// $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
 	// Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
