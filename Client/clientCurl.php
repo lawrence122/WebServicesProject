@@ -32,8 +32,6 @@
 	// curl_close($ch);
 	// echo $response;
 
-
-
 	// PUT Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
 	// $password_hash = password_hash("another", PASSWORD_DEFAULT);

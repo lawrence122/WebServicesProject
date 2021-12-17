@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: File Conversion API
+  description: Converts video, audio, and text files format to other formats.
+  version: 0.1.9
+servers:
+  - url: http://localhost/WebServicesProject/Converter/api/
+    description: URL needed before adding parameters for any kind of requests.
+paths:
+  /client/{licenseNumber}:
+    get:
+      description: Returns a list of conversions made by the client
+      parameters:
+        - licenseNumber: the client's license number
+      responses:
+        '200':
+          description: Successfully returned a list of conversions made by the client
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  required: license number
+                  properties:
+                    conversionID:
+                      type: integer
+                    clientID:
+                      type: integer
+                    requestDate:
+                      type: datetime
+                    completionDate:
+                      type: datetime
+                    originalFormat:
+                      type: string
+                    targetFormat:
+                      type: string
+                    file:
+                      type: string
+                    outputFile:
+                      type: string
+        '400':
+          description: Displays an "Invalid license number" error.
+
+    post:
+      description: Lets a user post a new artist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              #  ----- Added line  ------------------------------------
+              $ref: '#/components/schemas/Artist'
+              #  ---- /Added line  ------------------------------------
+      responses:
+        '200':
+          description: Successfully created a new artist
+        '400':
+          #  ----- Added line  ----------------------------------------
+          $ref: '#/components/responses/400Error'
+          #  ---- /Added line  ----------------------------------------    
+
+  /artists/{username}:
+    get:
+      description: Obtain information about an artist from his or her unique username
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          
+      responses:
+        '200':
+          description: Successfully returned an artist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  artist_name:
+                    type: string
+                  artist_genre:
+                    type: string
+                  albums_recorded:
+                    type: integer
+                
+        '400':
+          #  ----- Added line  ----------------------------------------
+          $ref: '#/components/responses/400Error'
+          #  ---- /Added line  ----------------------------------------     
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+
+  schemas:
+    Artist:
+      type: object
+      required:
+        - username
+      properties:
+        artist_name:
+          type: string
+        artist_genre:
+            type: string
+        albums_recorded:
+            type: integer
+        username:
+            type: string
+
+  #  ----- Added lines  ----------------------------------------
+  parameters:
+    PageLimit:
+      name: limit
+      in: query
+      description: Limits the number of items on a page
+      schema:
+        type: integer
+      
+    PageOffset:
+      name: offset
+      in: query
+      description: Specifies the page number of the artists to be displayed
+      schema:
+        type: integer
+
+  responses:
+    400Error:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object 
+            properties:
+              message:
+                type: string
