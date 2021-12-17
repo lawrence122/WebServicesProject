@@ -63,20 +63,20 @@ class ClientController {
 	}
 
 	function delete($licenseNumber) {
-		$files = new FileController();
-		$videos = new VideoController();
-
-		if (!empty($files->getAllFromClient($licenseNumber))) {
-			$files->deleteWithLicense($licenseNumber);
-		}
-		if (!empty($videos->getAllFromClient($licenseNumber))) {
-			$videos->deleteWithLicense($licenseNumber);
-		}
-
 		$c = new ClientController();
 		$c = $c->getClient($licenseNumber);
 
 		if (!is_null($c)) {
+			$files = new FileController();
+			$videos = new VideoController();
+
+			if (!empty($files->getAllFromClient($licenseNumber))) {
+				$files->deleteWithLicense($licenseNumber);
+			}
+			if (!empty($videos->getAllFromClient($licenseNumber))) {
+				$videos->deleteWithLicense($licenseNumber);
+			}
+			
 			$client = new Client();
 			$client->clientID = $c['clientID'];
 			$client->delete();
