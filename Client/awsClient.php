@@ -6,8 +6,8 @@
                 'region'  => 'us-east-1',
                 'version' => 'latest',
                 'credentials' => [
-                    'key'    => "",
-                    'secret' => "",
+                    'key'    => "AKIAUTZKO3SNYPVE6ILQ",
+                    'secret' => "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",
                 ]
             ]);
             $this->bucket = "cnkbucket";
