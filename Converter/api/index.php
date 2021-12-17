@@ -39,7 +39,7 @@
 				case 'POST':
 					if ($request->contentType == "application/json") {
 						$data = json_decode(file_get_contents('php://input'), true);
-						if(is_array($data)){
+						if(is_array($data)) {
 							if ($controllerName == "ClientController") {
 								// Check the url parameters
 								switch (ucfirst($values[0])) {
@@ -56,24 +56,6 @@
 										echo "Client created " . $data['clientName'] 
 												. ". Here is your license number: " 
 												. $licenseNumber . "<br>It is valid for a month.";
-										break;
-									case 'Password':
-										// Updates user password
-										$client = new ClientController();
-										if ($client->UpdatePassword($data['licenseNumber'], $data['password_hash'])) {
-											echo "Password Updated.";
-										} else {
-											echo "Invalid License Number.";
-										}
-										break;
-									case 'Name':
-										// Updates client name
-										$client = new ClientController();
-										if ($client->UpdateName($data['licenseNumber'], $data['clientName'])) {
-											echo "Name Updated.";
-										} else {
-											echo "Invalid License Number.";
-										}
 										break;
 									default:
 										echo "Invalid URL";
@@ -120,23 +102,66 @@
 					if ($request->accept == "application/json") {
 						switch ($values[0]) {
 							case "":
-								echo "Specify a license number";
+								$response->payload = "Specify a license number";
 								break;
 							default:
 								$response->payload = json_encode($controller->getAllFromClient($values[0]));
-								echo $response->payload;
 								break;
 						}
+						echo $response->payload;
 					} else {
 						echo "Only accept JSON data";
 					}
 					break;
 
 				case 'DELETE':
-					// Delete client, file, or video
-					$controller = new $controllerName();
-					$response->payload = $controller->Delete($values[0]);
+					if ($request->accept == "application/json") {
+						// Delete client, file, or video
+						$controller = new $controllerName();
+						$response->payload = $controller->Delete($values[0]);
+					} else {
+						$response->payload = "Only accept JSON data";
+					}
 					echo $response->payload;
+					break;
+
+				case 'PUT':
+					if ($request->accept == "application/json") {
+						if (ucfirst($keys[0]) == "Client") {
+							$data = json_decode(file_get_contents('php://input'), true);
+							if(is_array($data)) {
+								// echo $request->verb . "<br>Key: " . $keys[0] . "<br>" . $values[0] . "<br>";
+								switch (ucfirst($values[0])) {
+									case 'Password':
+										// Updates user password
+										$client = new ClientController();
+										if ($client->UpdatePassword($data['licenseNumber'], $data['password_hash'])) {
+											$response->payload = "Password Updated.";
+										} else {
+											$response->payload = "Invalid License Number.";
+										}
+										echo $response->payload;
+										break;
+									case 'Name':
+										// Updates client name
+										$client = new ClientController();
+										if ($client->UpdateName($data['licenseNumber'], $data['clientName'])) {
+											$response->payload = "Name Updated.";
+										} else {
+											$response->payload = "Invalid License Number.";
+										}
+										echo $response->payload;
+										break;
+									}
+								} else {
+								echo "Received invalid JSON!";
+							}
+						} else {
+							echo "You can only modify a client";
+						}
+					} else {
+						echo "Only accept JSON data";
+					}
 					break;
 				
 				default:
