@@ -6,3 +6,4 @@ To properly operate it:
 
 1. Unzip the CmdTools.zip folder.
 2. Drag the three executable files directly in the C:\ directory.
+3. Clone the repository directly in the xampp's htdocs folder.

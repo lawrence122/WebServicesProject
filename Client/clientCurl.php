@@ -57,10 +57,10 @@
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/705485387');
 
 	// Delete video
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/7');
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/1');
 
 	// Delete file
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/1');
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/2');
 
 	// Second part necessary for DELETE
 	// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
@@ -79,5 +79,14 @@
 	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
 	// curl_exec($ch);
 	// curl_close($ch);
+
+	// HEAD request
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/657469702");
+	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/657469702");
+	curl_setopt($ch, CURLOPT_NOBODY, true);
+	curl_setopt($ch, CURLOPT_HEADER, true);
+	curl_exec($ch);
+	curl_close($ch);
 
 ?>
