@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
     require("../../vendor/autoload.php");
 
     $s3 = new Aws\S3\S3Client([
@@ -41,4 +41,4 @@
     
     $request = $s3->createPresignedRequest($cmd, '+1 minutes');
     echo "<a href='".(string)$request->getUri()."' download> Click here to download</a>";
-?> -->
+?>
