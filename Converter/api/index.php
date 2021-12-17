@@ -53,9 +53,7 @@
 										$client = $c->getClient($licenseNumber);
 
 										updateKey($client['clientID'], $licenseNumber);
-										echo "Client created " . $data['clientName'] 
-												. ". Here is your license number: " 
-												. $licenseNumber . "<br>It is valid for a month.";
+										echo $licenseNumber;
 										break;
 									default:
 										echo "Invalid URL";
@@ -100,15 +98,21 @@
 					$controller = new $controllerName();
 
 					if ($request->accept == "application/json") {
-						switch ($values[0]) {
+						switch (ucfirst($values[0])) {
 							case "":
-								$response->payload = "Specify a license number";
+								echo "Specify a license number";
+								break;
+							case "Client":
+								
 								break;
 							default:
-								$response->payload = json_encode($controller->getAllFromClient($values[0]));
+								if (ucfirst($keys[0]) == "Client") {
+									echo json_encode($controller->getClient($values[0]));
+								} else {
+									echo json_encode($controller->getAllFromClient($values[0]));
+								}
 								break;
 						}
-						echo $response->payload;
 					} else {
 						echo "Only accept JSON data";
 					}

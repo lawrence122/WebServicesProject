@@ -2,8 +2,8 @@
 
 	// POST video with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
-	// $payload = json_encode(array('licenseNumber' => "705485387",
-	// 							'password_hash' => "another",
+	// $payload = json_encode(array('licenseNumber' => "657469702",
+	// 							'password_hash' => "passoword",
 	// 							'originalFormat' => 'txt',
 	// 							'targetFormat'   => 'md',
 	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.txt'
@@ -56,7 +56,7 @@
 
 
 	// Delete client
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/705485387');
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/705485387');
 
 	// Delete video
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/7');
@@ -65,19 +65,19 @@
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/1');
 
 	// Second part necessary for DELETE
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
+	// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-	$response = curl_exec($ch);
-	curl_close($ch);
-	echo $response;
+	// $response = curl_exec($ch);
+	// curl_close($ch);
+	// echo $response;
 	
 
 	// GET with curl client
 	// $ch = curl_init();
-	//// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/");
-	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/64908065");
+	// // curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/657469702");
+	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/657469702");
 	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
 	// curl_exec($ch);
 	// curl_close($ch);
