@@ -1,22 +1,22 @@
 <?php
 
 	// POST file with curl client
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
-	$payload = json_encode(array('licenseNumber' => "182277294",
-								'password_hash' => "passoword",
-								'originalFormat' => 'txt',
-								'targetFormat'   => 'pdf',
-								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.txt'
-						));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
+	// $payload = json_encode(array('licenseNumber' => "182277294",
+	// 							'password_hash' => "passoword",
+	// 							'originalFormat' => 'docx',
+	// 							'targetFormat'   => 'txt',
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.docx'
+	// 					));
 
 	// POST video with curl client
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	// $payload = json_encode(array('licenseNumber' => "27313093",
-	// 							'password_hash' => "passoword",
-	// 							'originalFormat' => 'mp3',
-	// 							'targetFormat'   => 'ogg',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp3'
-	// 					));
+	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
+	$payload = json_encode(array('licenseNumber' => "182277294",
+								'password_hash' => "passoword",
+								'originalFormat' => 'mp4',
+								'targetFormat'   => 'avi',
+								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp4'
+						));
 
 	// POST Create user
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
