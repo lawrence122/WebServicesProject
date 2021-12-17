@@ -38,11 +38,11 @@
 	// PUT Change password
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/password');
 	// $password_hash = password_hash("another", PASSWORD_DEFAULT);
-	// $payload = json_encode(array('licenseNumber' => "705485387", 'password_hash' => $password_hash));
+	// $payload = json_encode(array('licenseNumber' => "17121122", 'password_hash' => $password_hash));
 
 	// PUT Change name
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/name');
-	// $payload = json_encode(array('clientName' => "Another Name", 'licenseNumber' => "705485387"));
+	// $payload = json_encode(array('clientName' => "Another Name", 'licenseNumber' => "17121122"));
 
 	// Second part necessary for PUT
 	// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -54,9 +54,8 @@
 	// echo $response;
 
 
-
 	// Delete client
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/705485387');
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/17121122');
 
 	// Delete video
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/1');
@@ -71,15 +70,16 @@
 	// $response = curl_exec($ch);
 	// curl_close($ch);
 	// echo $response;
-	
+
 
 	// GET with curl client
 	// $ch = curl_init();
-	// // curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/657469702");
-	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/657469702");
+	// // curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/17121122");
+	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/17121122");
 	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
 	// curl_exec($ch);
 	// curl_close($ch);
+
 
 	// HEAD request
 	// $ch = curl_init();
