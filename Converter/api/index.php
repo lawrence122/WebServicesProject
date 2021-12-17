@@ -96,36 +96,27 @@
 
 				case 'GET':
 					$controller = new $controllerName();
-
-					if ($request->accept == "application/json") {
-						switch (ucfirst($values[0])) {
-							case "":
-								echo "Specify a license number";
-								break;
-							case "Client":
-								
-								break;
-							default:
-								if (ucfirst($keys[0]) == "Client") {
-									echo json_encode($controller->getClient($values[0]));
-								} else {
-									echo json_encode($controller->getAllFromClient($values[0]));
-								}
-								break;
-						}
-					} else {
-						echo "Only accept JSON data";
+					switch (ucfirst($values[0])) {
+						case "":
+							echo "Specify a license number";
+							break;
+						case "Client":
+							
+							break;
+						default:
+							if (ucfirst($keys[0]) == "Client") {
+								echo json_encode($controller->getClient($values[0]));
+							} else {
+								echo json_encode($controller->getAllFromClient($values[0]));
+							}
+							break;
 					}
 					break;
 
 				case 'DELETE':
-					if ($request->accept == "application/json") {
-						// Delete client, file, or video
-						$controller = new $controllerName();
-						$response->payload = $controller->Delete($values[0]);
-					} else {
-						$response->payload = "Only accept JSON data";
-					}
+					// Delete client, file, or video
+					$controller = new $controllerName();
+					$response->payload = $controller->Delete($values[0]);
 					echo $response->payload;
 					break;
 
