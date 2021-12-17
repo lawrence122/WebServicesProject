@@ -49,7 +49,7 @@ class FileController {
 		$file->outputFile = $outputPath;
 		$file->completionDate = date('Y-m-d H:i:sP');
 		$file->insert();
-		return $outputPath;
+		return "<a href='".$outputPath."' download> Click here to download";
 	}
 
 	function Delete($licenseNumber) {
