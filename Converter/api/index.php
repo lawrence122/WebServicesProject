@@ -41,23 +41,19 @@
 						$data = json_decode(file_get_contents('php://input'), true);
 						if(is_array($data)) {
 							if ($controllerName == "ClientController") {
-								// Check the url parameters
-								switch (ucfirst($values[0])) {
-									case "Create":
-										// Registers a client
-										$licenseNumber = new LicenseNumber();
-										$licenseNumber = $licenseNumber->generateLicenseNumber();
+								if (ucfirst($values[0]) == "Create") {
+									// Registers a client
+									$licenseNumber = new LicenseNumber();
+									$licenseNumber = $licenseNumber->generateLicenseNumber();
 
-										$c = new ClientController();
-										$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
-										$client = $c->getClient($licenseNumber);
+									$c = new ClientController();
+									$c->insert($data['clientName'], $licenseNumber, $data['password_hash']);
+									$client = $c->getClient($licenseNumber);
 
-										updateKey($client['clientID'], $licenseNumber);
-										echo $licenseNumber;
-										break;
-									default:
-										echo "Invalid URL";
-										break;
+									updateKey($client['clientID'], $licenseNumber);
+									echo $licenseNumber;
+								} else {
+									echo "Invalid URL";
 								}
 							} else {
 								// Conversion
@@ -96,12 +92,9 @@
 
 				case 'GET':
 					$controller = new $controllerName();
-					switch (ucfirst($values[0])) {
+					switch ($values[0]) {
 						case "":
 							echo "Specify a license number";
-							break;
-						case "Client":
-							
 							break;
 						default:
 							if (ucfirst($keys[0]) == "Client") {
@@ -125,7 +118,6 @@
 						if (ucfirst($keys[0]) == "Client") {
 							$data = json_decode(file_get_contents('php://input'), true);
 							if(is_array($data)) {
-								// echo $request->verb . "<br>Key: " . $keys[0] . "<br>" . $values[0] . "<br>";
 								switch (ucfirst($values[0])) {
 									case 'Password':
 										// Updates user password
@@ -163,12 +155,10 @@
 					echo "Cannot handle this type of request";
 					break;
 			}
-			
 		} else {
 			echo $controllerName . " does not exist!";
 		}
 	} else {
 		echo "Requires parameter";
 	}
-
 ?>

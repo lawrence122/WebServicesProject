@@ -1,14 +1,5 @@
 <?php
 
-	// POST video with curl client
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	// $payload = json_encode(array('licenseNumber' => "182277294",
-	// 							'password_hash' => "passoword",
-	// 							'originalFormat' => 'mp4',
-	// 							'targetFormat'   => 'wav',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\file.mp4'
-	// 					));
-
 	// POST file with curl client
 	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
 	$payload = json_encode(array('licenseNumber' => "182277294",
@@ -17,6 +8,15 @@
 								'targetFormat'   => 'pdf',
 								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.txt'
 						));
+
+	// POST video with curl client
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
+	// $payload = json_encode(array('licenseNumber' => "27313093",
+	// 							'password_hash' => "passoword",
+	// 							'originalFormat' => 'mp3',
+	// 							'targetFormat'   => 'ogg',
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp3'
+	// 					));
 
 	// POST Create user
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
