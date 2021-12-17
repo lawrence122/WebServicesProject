@@ -1,6 +1,7 @@
 <?php
 require_once("../controllers/ClientController.php");
 require_once("../models/VideoConversion.php");
+require_once("../../Client/awsClient.php");
 
 class VideoController {
 	function getAll() {
@@ -51,7 +52,16 @@ class VideoController {
 			$video->outputFile = $outputPath;
 			$video->completionDate = date('Y-m-d H:i:sP');
 			$video->insert();
-			return "<a href='".$outputPath."' download> Click here to download";
+
+			$aws = new AWSClient();
+			if ($aws->upload($newFilename, $outputPath) == "200") {
+				return array('key' => $newFilename, 'path' => $outputPath);
+			} else {
+				return "Error!! File not uploaded";
+			}
+			// $aws = new AWSClient();
+			// $aws->upload($newFilename, $targetPath);
+			// return $aws->download($newFilename);
 		}
 	}
 

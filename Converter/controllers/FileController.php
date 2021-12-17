@@ -1,6 +1,7 @@
 <?php
 require_once("../controllers/ClientController.php");
 require_once("../models/FileConversion.php");
+require_once("../../Client/awsClient.php");
 
 class FileController {
 	function getAll() {
@@ -49,7 +50,15 @@ class FileController {
 		$file->outputFile = $outputPath;
 		$file->completionDate = date('Y-m-d H:i:sP');
 		$file->insert();
-		return "<a href='".$outputPath."' download> Click here to download</a>";
+		$aws = new AWSClient();
+		if ($aws->upload($newFilename, $outputPath) == "200") {
+			echo "FileController: ";
+			var_dump($outputPath);
+			echo "<br>";
+			return array('key' => $newFilename, 'path' => $outputPath);
+		} else {
+			return "Error!! File not uploaded";
+		}
 	}
 
 	function Delete($conversionID) {

@@ -3,6 +3,7 @@
 	require_once("../api/Response.php");
 	require_once("../api/JWT.php");
 	require_once("../api/LicenseNumber.php");
+	require_once("../../Client/awsClient.php");
 
 	spl_autoload_register("autoload");
 
@@ -73,7 +74,18 @@
 										}
 
 										$controller = new $controllerName();
-										$response->payload = json_encode($controller->insert($data));
+										$conversion = json_encode($controller->insert($data));
+										if (!str_contains($conversion, "Error") && !str_contains($conversion, "Invalid")) {
+											$aws = new AWSClient();
+											$conversion = json_decode($conversion, true);
+											echo "index: ";
+											var_dump($conversion['path']);
+											echo "<br>";
+											$response->payload = $aws->download($conversion['key'], $conversion['path']);
+										} else {
+											$response->payload = $conversion;
+										}
+										// $response->payload = json_encode($controller->insert($data));
 										echo $response->payload;
 									} else {
 										echo "Wrong password.";
