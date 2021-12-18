@@ -43,13 +43,17 @@
     <div id="wrapper">
         <form action="" method="POST">
             <div id="form">
-                <h1>Modify Account</h1><br>
-                <label>Change Email: 
-                <input type="text" id="email" name="email" value="<?= $data->email ?>"></label>
+                <h1>Modify Email</h1><br>
+                <label>Current Email: 
+                <input type="text" id="email" name="email"></label>
+                <br><br>
+
+                <label>New Email: 
+                <input type="text" id="email" name="new_email"></label>
                 <br><br>
                 </div>
 
-                <input type="submit" id="edit" name="action" value="Submit Changes" onclick="validateForm(event);">
+                <input type="submit" id="edit" name="action" value="Submit Changes">
                 <a href='<?= BASE ?>/User/index' id="editLink"><p id="goBack">Go Back</p></a><br>
         </form>
     </div>

@@ -7,17 +7,15 @@ class UserController extends \App\core\Controller {
 		$this->view('Default/editUser');
 	}
 
-	function edit($user_id) {
+	function changeEmail() {
 		$user = new \App\models\User();
-		$user = $user->find($_SESSION['user_id']);
 
 		if (isset($_POST["action"])) {
-			$user->full_name = $_POST["full_name"];
 			$user->email = $_POST["email"];
-			$user->update();
+			$user->updateEmail($_SESSION['token'], $_POST["new_email"]);
 			header("location:".BASE."/Default/home");
 		} else {
-			$this->view('Default/editAccount', $user);
+			$this->view('Default/editAccount');
 		}
 	}
 

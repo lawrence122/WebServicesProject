@@ -18,10 +18,11 @@ class DefaultController extends \App\core\Controller {
 			if (!$user) {
 				header('location:'.BASE.'/Default/register?error=Registration Error');
 			} else {
+				$_SESSION['token'] = $user;
 				$this->view('Default/home');
 			}
 		} else {
-			$this->view('Login/Register');
+			$this->view('Login/register');
 		}
 	}
 

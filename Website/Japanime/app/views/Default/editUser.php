@@ -42,7 +42,7 @@
 
     <div id="wrapper">
         <div id="buttons">
-            <a href='<?= BASE ?>/User/edit/<?= $_SESSION['user_id'] ?>'>
+            <a href='<?= BASE ?>/User/changeEmail/<?= $_SESSION['token'] ?>'>
                 <button type="button" class="editBtn">Modify Account</button>
             </a><br>
             <a href='<?= BASE ?>/User/changePassword/<?= $_SESSION['user_id'] ?>'>

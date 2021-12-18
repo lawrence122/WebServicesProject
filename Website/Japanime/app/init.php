@@ -1,9 +1,6 @@
 <?php
 session_start();
-//looks for the phpSESSIONID cookie
-//creates it if there is none
 require "autoload.php";
-require "core/phpqrcode/qrlib.php";
 require "core/helpers.php";
 
 $path = getcwd();
