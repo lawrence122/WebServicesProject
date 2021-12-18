@@ -1,0 +1,386 @@
+select {
+	font-size: 15px;
+	font-family: muli, sans-serif;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-color: #AAAAAA;
+}
+
+.products {
+	padding-left: 105px;
+}
+
+.product {
+	transition: box-shadow .3s;
+	color: black;
+	background-color: white;
+	max-width: 300px;
+	margin: auto;
+	border: 1px solid #CCC;
+	text-align: center;
+	font-family: muli, sans-serif;
+	font-weight: bold;
+	padding: 15px;
+	margin: -10px;
+}
+
+.product:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.price {
+	color: grey;
+	font-size: 22px;
+}
+
+.product button {
+	border: none;
+	outline: 0;
+	padding: 12px;
+	color: white;
+	background-color: #39CB29;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+	transition: 0.2s all; 
+}
+
+.product button:active {
+	transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.product button:hover {
+	opacity: 0.8;
+}
+
+button[type="button"]:disabled {
+  background: #dddddd;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.24);
+  cursor:not-allowed;
+}
+
+.line {
+	display: inline-block;
+	font-size: 14px;
+}
+
+#status_out {
+	margin-left: 40px;
+	color: red;
+}
+
+#status_in {
+	margin-left: 40px;
+	color: green;
+}
+
+#removeBtn {
+  margin-top: 10px;
+	background: #EF2D2D;
+}
+
+/* ---------------------------------------------------------------- */
+
+.tb
+{
+    display: inline-block;
+    width: 100%;
+}
+
+.td
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#keyword
+{
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    position: relative;
+    left: 0px;
+    right: 0px;
+    top: 50px;
+    bottom: 50px;
+    width: 470px;
+    height: 90px;
+    padding: 20px;
+    margin: -123px auto 0 auto;
+    margin-top: 0px;
+    margin-bottom: 100px;
+    background-color: #F08CEC;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+    transform: scale(0.6);
+}
+
+
+#keyword
+{
+    width: 100%;
+    height: 96px;
+    font-size: 60px;
+    line-height: 1;
+}
+
+#keyword::placeholder
+{
+    color: #FFF;
+}
+
+#s-cover
+{
+    width: 1px;
+    padding-left: 35px;
+}
+
+#s-circle
+{
+    position: relative;
+    top: -8px;
+    left: 0;
+    width: 43px;
+    height: 43px;
+    margin-top: 0;
+    border-width: 15px;
+    border: 15px solid #fff;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 0.5s ease all;
+}
+
+#s-cover:hover #s-circle
+{
+    top: -1px;
+    width: 67px;
+    height: 15px;
+    border-width: 0;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#s-cover:hover span
+{
+    top: 50%;
+    left: 56px;
+    width: 25px;
+    margin-top: -9px;
+    transform: rotateZ(0);
+}
+
+#s-cover:hover #searchItemButton span:before
+{
+    bottom: 11px;
+    transform: rotateZ(52deg);
+}
+
+#s-cover:hover #searchItemButton span:after
+{
+    bottom: -11px;
+    transform: rotateZ(-52deg);
+}
+#s-cover:hover #searchItemButton span:before, #s-cover:hover #searchItemButton span:after
+{
+    right: -6px;
+    width: 40px;
+    background-color: #fff;
+}
+
+#ytd-url {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 10px 14px;
+  margin: 20px;
+  color: #fff;
+  font-family: Nunito;
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #ff7575;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
+  z-index: 125;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #FFF;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+#chooseOrder {
+  position: relative;
+  display: flex;
+  width: 25em;
+  height: 3em;
+  margin-left: 600px;
+  margin-bottom: 50px;
+  bottom: 120px;
+  line-height: 3;
+  background: #f08cec;
+  overflow: hidden;
+  border-radius: .25em;
+}
+
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+}
+/* Arrow */
+#chooseOrder::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #f08cec;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+#chooseOrder:hover::after {
+  color: white;
+}
+
+/*Main button class
+=============================================================================================*/
+.ph-button {
+  
+    border-style: solid;
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    margin-left: -10px;
+    margin-top: -3px;
+    border-radius: 6px;
+    margin-bottom: 28px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;  
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700; 
+    padding: 12px 32px 11px;
+    font-size: 18px;
+  
+}
+
+/*Blue
+==========================*/
+.ph-btn-blue {
+    border-color: #34495e;
+    background-color: #2B9AFC;
+}
+
+.ph-btn-blue:hover, .ph-btn-blue:focus, .ph-btn-blue:active {
+    background-color: #397CAC;
+    border-color: #326E99;   
+}
+
+
+
+/* ---------------------------------------------------------------------------------------- */
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #FFF;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+#categoryChooseOrder {
+  position: relative;
+  display: flex;
+  width: 25em;
+  height: 3em;
+  margin-left: 667px;
+  margin-bottom: 30px;
+  bottom: 0px;
+  line-height: 3;
+  background: #f08cec;
+  overflow: hidden;
+  border-radius: .25em;
+}
+
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+}
+/* Arrow */
+#categoryChooseOrder::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #f08cec;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+#categoryChooseOrder:hover::after {
+  color: white;
+}
+
+#categoryOrderDiv {
+  margin-top: 20px;
+}
+
+#categoryChooseOrderButton {
+  top: 20px;
+  height: 40px;
+  width: 90px; 
+  margin-left: 40px;
+}

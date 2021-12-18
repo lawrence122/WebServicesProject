@@ -1,0 +1,251 @@
+#next-btn {
+  display: block;
+  text-align: right;
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 40px;
+}
+
+#continue-shopping {
+  font-family: muli, sans-serif;
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #AFB7AE;
+  text-align: center;
+  cursor: pointer;
+  width: 20%;
+  margin-left: 20px;
+  margin-right: auto;
+  font-size: 16px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transition: 0.2s all; 
+}
+
+#checkout {
+  font-family: muli, sans-serif;
+  border: none;
+  outline: 0;
+  padding: 15px;
+  color: white;
+  background-color: #50D746;
+  text-align: center;
+  cursor: pointer;
+  width: 15%;
+  margin-left: 20px;
+  margin-right: auto;
+  font-size: 18px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transition: 0.2s all; 
+}
+
+#checkout:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+#checkout:hover {
+  opacity: 0.8;
+}
+
+#checkout:disabled {
+  background: #dddddd;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.24);
+  cursor:not-allowed;
+}
+
+#continue-shopping:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+#continue-shopping:hover {
+  opacity: 0.8;
+}
+
+.shopping-cart {
+  width: 1000px;
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+ 
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-family: muli, sans-serif;
+  font-weight: 400;
+}
+ 
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+.delete-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+ 
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}
+
+.image {
+  margin-right: 50px;
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 250px;
+  width: 1000px;
+}
+ 
+.description span {
+  display: block;
+  font-size: 18px;
+  color: #43484D;
+  font-weight: 500;
+  font-family: muli, sans-serif;
+}
+
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+  font-family: muli, sans-serif;
+}
+ 
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.minus-btn img {
+  margin-top: 3px;
+}
+
+.plus-btn img {
+  margin-top: 2px;
+}
+ 
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+  font-family: muli, sans-serif;
+}
+
+@media (max-width: 800px) {
+    .shopping-cart {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+  }
+
+  .item {
+      height: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .image img {
+      width: 10%;
+  }
+
+  .image,
+  .quantity,
+  .description {
+      width: 100%;
+      text-align: center;
+      margin: 6px 0;
+  }
+
+  .buttons {
+      margin-right: 20px;
+  }
+}
+
+.line {
+  border-top: 3px solid #AFB7AE;
+  margin-right: 200px;
+  margin-left: 200px;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+#totalPrice {
+  width: 1000px;
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#priceLabel {
+  font-family: muli, sans-serif;
+  text-align: left;
+  font-size: 26px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+#totalPriceLabel {
+  font-family: muli, sans-serif;
+  text-align: right;
+  font-size: 22px;
+  margin-left: 720px;
+}

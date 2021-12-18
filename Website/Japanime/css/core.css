@@ -1,0 +1,140 @@
+body {
+	width: 100%;
+	background: #F7F1C6;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+}
+
+#container {
+	width: 100%;
+	position: relative;
+}
+
+#shopping-bag {
+	position: absolute;
+	right: 100px;
+	top: 40px;
+	width: 50px;
+}
+
+#account {
+	position: absolute;
+	right: 40px;
+	top: 45px;
+	width: 50px;
+}
+
+header {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#logo {
+	 width: 80%;
+	 height: auto;
+	 display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.nav_bar {
+  	background: #f7e5fa;
+  	border-bottom: 3px solid black;
+  	display: flex;
+  	justify-content: center;
+  	margin-bottom: 20px;
+}
+
+nav ul {
+	list-style-type: none;
+	justify-content: space-between;
+	margin: 0px;
+	margin-bottom: 25px;
+	padding: 5px 0px 5px 30px;
+}
+
+nav li {
+	display: inline;
+	margin-right: 40px;
+}
+
+nav li a {
+	text-decoration: none;
+	font-size: 16px;
+	font-family: muli, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+li {
+  	color: #fff;
+  	float: left;
+  	padding: 1rem;
+  	position: relative;
+  	text-decoration: none;
+}
+
+ul li ul {
+	background: white;
+	visibility: hidden;
+  	opacity: 0;
+  	min-width: 5rem;
+  	position: absolute;
+  	margin-top: 1rem;
+  	left: 0;
+  	display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  	visibility: visible;
+  	opacity: 1;
+  	display: block;
+}
+
+ul li ul li {
+ 	width: 100%;
+}
+
+.dropdown > li:hover > a,
+a.current {
+	color: #EFC1FF;
+}
+
+.dropdown {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+
+#nav_ul > li:hover {
+	background: white;
+}
+
+nav li a.current {
+	color: #EFC1FF;
+}
+
+nav li.curr_page {
+	background: white;
+}
+
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	font-size: 13px;
+	margin-top: 5px;
+	padding: 13px 0px 0px 20px;
+	clear: both;
+	color: black;
+	font-weight: bold;
+	font-family: muli, sans-serif;
+	background-color: #f7e5fa;
+	height: 30px;
+	border-top: 3px solid black;
+}
