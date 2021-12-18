@@ -2,28 +2,28 @@
 
 	// POST file with curl client
 	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/file/convert');
-	// $payload = json_encode(array('licenseNumber' => "182277294",
+	// $payload = json_encode(array('licenseNumber' => "213946402",
 	// 							'password_hash' => "passoword",
 	// 							'originalFormat' => 'docx',
-	// 							'targetFormat'   => 'txt',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\test.docx'
+	// 							'targetFormat'   => 'md',
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\doc.docx'
 	// 					));
 
 	// POST video with curl client
 	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	$payload = json_encode(array('licenseNumber' => "182277294",
+	$payload = json_encode(array('licenseNumber' => "213946402",
 								'password_hash' => "passoword",
-								'originalFormat' => 'mp4',
+								'originalFormat' => 'mp3',
 								'targetFormat'   => 'avi',
-								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp4'
+								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp3'
 						));
 
-	// POST Create user
-	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
-	// $password_hash = password_hash("passoword", PASSWORD_DEFAULT);
-	// $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
+	// // POST Create user
+	// // $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
+	// // $password_hash = password_hash("passoword", PASSWORD_DEFAULT);
+	// // $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
-	// Second part necessary for POST
+	// // Second part necessary for POST
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -74,8 +74,8 @@
 
 	// GET with curl client
 	// $ch = curl_init();
-	// // curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/17121122");
-	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/17121122");
+	// // curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/client/657469702");
+	// curl_setopt($ch, CURLOPT_URL, "http://localhost/WebServicesProject/Converter/api/file/657469702");
 	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
 	// curl_exec($ch);
 	// curl_close($ch);

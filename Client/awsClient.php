@@ -18,14 +18,21 @@
             $result = $this->s3->putObject([
                 'Bucket' => $this->bucket,
                 'Key'    => $key,
-                'Body'   => 'Conversion made with Lawrence and Émilie \' API',
+                'Body'   => 'this is a body',
                 'SourceFile' => $source
             ]);
             return $result["@metadata"]["statusCode"];
         }
 
         // Download video
-        function download($key, $outputPath) {
+        function download($key) {
+            //Downloads
+            $result = $this->s3->getObject([
+                'Bucket' => $this->bucket,
+                'Key'    => $key,
+                'SaveAs' => 'C:\\Users\Lawrence' . DIRECTORY_SEPARATOR . $key
+            ]);
+
             // Link
             // $key = substr($key, 1, -1);
             $cmd = $this->s3->getCommand('GetObject', [
@@ -34,11 +41,7 @@
             ]);
             
             $request = $this->s3->createPresignedRequest($cmd, '+5 minutes');
-            echo "AWS client: ";
-			var_dump($outputPath);
-			echo "<br>";
-            return "<a href='".(string)$request->getUri()."'>View file</a><br>
-                    <a href='" . $outputPath . "' download>Download</a>";
+            return "<a href='".(string)$request->getUri()."'>Download</a>";
         }
     }
 ?>

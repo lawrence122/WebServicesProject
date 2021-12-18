@@ -52,9 +52,6 @@ class FileController {
 		$file->insert();
 		$aws = new AWSClient();
 		if ($aws->upload($newFilename, $outputPath) == "200") {
-			echo "FileController: ";
-			var_dump($outputPath);
-			echo "<br>";
 			return array('key' => $newFilename, 'path' => $outputPath);
 		} else {
 			return "Error!! File not uploaded";

@@ -78,10 +78,7 @@
 										if (!str_contains($conversion, "Error") && !str_contains($conversion, "Invalid")) {
 											$aws = new AWSClient();
 											$conversion = json_decode($conversion, true);
-											echo "index: ";
-											var_dump($conversion['path']);
-											echo "<br>";
-											$response->payload = $aws->download($conversion['key'], $conversion['path']);
+											$response->payload = $aws->download($conversion['key']);
 										} else {
 											$response->payload = $conversion;
 										}
