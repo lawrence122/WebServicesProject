@@ -1,8 +1,7 @@
 <?php
 namespace App\models;
 
- // extends \App\core\Model
-class User {
+class User extends \App\core\Model {
 	public $password_hash;
 	public $email;
 
@@ -72,20 +71,20 @@ class User {
 	    }
 	}
 
-	// public function updatePassword() {
-	// 	$stmt = self::$connection->prepare("UPDATE user SET password_hash = :password_hash WHERE user_id = :user_id");
- //        $stmt->execute(['user_id'=>$this->user_id, 'password_hash'=>$this->password_hash]);
-	// }
+	public function deleteUser($token) {
+		$ch = curl_init('http://localhost/cart-shop/api/user?key=' . $token);
 
-	// public function update() {
-	// 	$stmt = self::$connection->prepare("UPDATE user SET full_name = :full_name, email = :email WHERE user_id = :user_id");
- //        $stmt->execute(['user_id'=>$this->user_id, 'full_name'=>$this->full_name, 'email'=>$this->email]);
-	// }
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-	// public function delete() {
-	// 	$stmt = self::$connection->prepare("DELETE FROM user WHERE user_id = :user_id");
-	// 	$stmt->execute(['user_id'=>$this->user_id]);
-	// }
-}
+		$response = curl_exec($ch);
+		curl_close($ch);
+		$response = json_decode($response, true);
+		
+		if ($response['status'] == '200') {
+			echo "Password Updated";
+		}
+	}
 
 ?>
