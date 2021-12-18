@@ -78,11 +78,10 @@
 										if (!str_contains($conversion, "Error") && !str_contains($conversion, "Invalid")) {
 											$aws = new AWSClient();
 											$conversion = json_decode($conversion, true);
-											$response->payload = $aws->download($conversion['key']);
+											$response->payload = $aws->download($conversion['key'], $data['saveAs']);
 										} else {
 											$response->payload = $conversion;
 										}
-										// $response->payload = json_encode($controller->insert($data));
 										echo $response->payload;
 									} else {
 										echo "Wrong password.";

@@ -7,10 +7,6 @@ class Client {
 		$this->Model = new Model();
 	}
 
-	// public function isValid(){
-	// 	return !empty($this->username) && !password_verify('', $this->password_hash);
-	// }
-
 	public function getAllClients(){
 		$stmt = $this->Model::$connection->prepare("SELECT * FROM client");
 		$stmt->execute();
@@ -56,14 +52,4 @@ class Client {
 		$stmt = $this->Model::$connection->prepare("DELETE FROM client WHERE clientID = :clientID");
 		$stmt->execute(['clientID'=>$this->clientID]);
 	}
-
-	// public function failedLogin(){
-	// 	$stmt = self::$connection->prepare("UPDATE user SET failed_login_attempts = failed_login_attempts + 1 WHERE user_id = :user_id");
-	// 	$stmt->execute(['user_id'=>$this->user_id]);
-	// }
-
-	// public function successLogin(){
-	// 	$stmt = self::$connection->prepare("UPDATE user SET failed_login_attempts = 0, last_login_timestamp = UTC_TIMESTAMP() WHERE user_id = :user_id");
-	// 	$stmt->execute(['user_id'=>$this->user_id]);
-	// }
 }

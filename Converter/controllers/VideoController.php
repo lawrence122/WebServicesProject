@@ -59,9 +59,6 @@ class VideoController {
 			} else {
 				return "Error!! File not uploaded";
 			}
-			// $aws = new AWSClient();
-			// $aws->upload($newFilename, $targetPath);
-			// return $aws->download($newFilename);
 		}
 	}
 

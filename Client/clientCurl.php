@@ -6,17 +6,19 @@
 	// 							'password_hash' => "passoword",
 	// 							'originalFormat' => 'docx',
 	// 							'targetFormat'   => 'md',
-	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\doc.docx'
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\doc.docx',
+	// 							'saveAs' => 'C:\\Users\Lawrence\Downloads'
 	// 					));
 
 	// POST video with curl client
-	$ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
-	$payload = json_encode(array('licenseNumber' => "213946402",
-								'password_hash' => "passoword",
-								'originalFormat' => 'mp3',
-								'targetFormat'   => 'avi',
-								'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\Example.mp3'
-						));
+	// $ch = curl_init('http://localhost/WebServicesProject/Converter/api/video/convert');
+	// $payload = json_encode(array('licenseNumber' => "213946402",
+	// 							'password_hash' => "passoword",
+	// 							'originalFormat' => 'mp3',
+	// 							'targetFormat'   => 'avi',
+	// 							'file'   => 'C:\xampp\htdocs\WebServicesProject\Converter\input\xample.mp3',
+	// 							'saveAs' => 'C:\\Users\Lawrence\Downloads'
+	// 					));
 
 	// // POST Create user
 	// // $ch = curl_init('http://localhost/WebServicesProject/Converter/api/client/create');
@@ -24,13 +26,13 @@
 	// // $payload = json_encode(array('clientName' => "TekName", 'password_hash' => $password_hash));
 
 	// // Second part necessary for POST
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+	// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept:application/json', 'Content-Type:application/json'));
+	// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-	$response = curl_exec($ch);
-	curl_close($ch);
-	echo $response;
+	// $response = curl_exec($ch);
+	// curl_close($ch);
+	// echo $response;
 
 
 	// PUT Change password

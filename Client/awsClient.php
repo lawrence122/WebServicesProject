@@ -25,16 +25,15 @@
         }
 
         // Download video
-        function download($key) {
+        function download($key,$saveAs) {
             //Downloads
             $result = $this->s3->getObject([
                 'Bucket' => $this->bucket,
                 'Key'    => $key,
-                'SaveAs' => 'C:\\Users\Lawrence' . DIRECTORY_SEPARATOR . $key
+                'SaveAs' => $saveAs . DIRECTORY_SEPARATOR . $key
             ]);
 
             // Link
-            // $key = substr($key, 1, -1);
             $cmd = $this->s3->getCommand('GetObject', [
                 'Bucket' => $this->bucket,
                 'Key' => $key
