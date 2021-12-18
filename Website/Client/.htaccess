@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteBase /WebServicesProject/Website/Client
+
+RewriteRule ^/?([a-z]+)/(.*)$ index.php?$1=$2
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

@@ -6,10 +6,6 @@ class User {
 	public $password_hash;
 	public $email;
 
-	public function __construct() {
-		parent::__construct();
-	}
-
 	// public function isValid() {
 	// 	return !empty($this->username) && !password_verify('', $this->password_hash);
 	// }
