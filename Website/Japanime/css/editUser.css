@@ -1,0 +1,119 @@
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+form, #buttons {
+  display: block;
+  text-align: center;
+  font-family: muli, sans-serif;
+  width: 20%;
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  margin-bottom: 30px;
+}
+
+#form {
+  text-align: right;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #e43e6f;
+}
+
+label {
+  font-size: 18px;
+  font-family: muli, sans-serif;
+}
+
+#edit {
+  margin-top: 30px;
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #e43e6f;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transition: 0.2s all; 
+}
+
+.editBtn {
+  margin-top: 30px;
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #e43e6f;
+  text-align: center;
+  cursor: pointer;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transition: 0.2s all; 
+}
+
+#edit:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.editBtn:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+#edit:hover {
+  opacity: 0.8;
+}
+
+.editBtn:hover {
+  opacity: 0.8;
+}
+
+#deleteText {
+  margin-top: 50px;
+  color: red;
+  font-weight: bold;
+}
+
+#goBack {
+  margin-top: 50px;
+  color: black;
+  font-weight: bold;
+}
+
+#editLink:link {
+  text-decoration: none;
+}
+
+#editLink:visited {
+  text-decoration: none;
+}
+
+#editLink:hover {
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+#editLink:active {
+  text-decoration: none;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}

@@ -1,0 +1,96 @@
+body {
+	background: #F7F1C6;
+	display: flex;
+	justify-content: center;
+}
+
+#wrapper {
+	text-align: center;
+	font-family: muli, sans-serif;
+	width: 50%;
+	margin-top: 50px;
+	padding: 20px;
+	padding-bottom: 40px;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+}
+
+h1 {
+	font-family: muli, sans-serif;
+	color: #ff8da1;
+	font-size: 48px;
+}
+
+h2 {
+	font-family: muli, sans-serif;
+	font-size: 22px;
+	margin-bottom: -10px;
+}
+
+.star {
+	color: red;
+}
+
+#form {
+	margin-top: 20px;
+	text-align: right;
+	display: inline-block;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  text-align: left;
+  font-size: 12px;
+  font-family: muli, sans-serif;
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent red transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#register {
+	border: none;
+	outline: 0;
+	padding: 12px;
+	color: white;
+	background-color: #e43e6f;
+	width: 100px;
+	text-align: center;
+	cursor: pointer;
+	margin-top: 40px;
+	font-size: 16px;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+}
+
+#register:hover {
+	opacity: 0.8;
+}
+
+p {
+	padding-top: 30px;
+	font-size: 14px;
+}
