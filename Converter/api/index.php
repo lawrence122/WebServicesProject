@@ -3,7 +3,7 @@
 	require_once("../api/Response.php");
 	require_once("../api/JWT.php");
 	require_once("../api/LicenseNumber.php");
-	require_once("../../Client/awsClient.php");
+	require_once("../models/awsClient.php");
 
 	spl_autoload_register("autoload");
 

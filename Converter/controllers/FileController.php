@@ -1,7 +1,7 @@
 <?php
 require_once("../controllers/ClientController.php");
 require_once("../models/FileConversion.php");
-require_once("../../Client/awsClient.php");
+require_once("../models/awsClient.php");
 
 class FileController {
 	function getAll() {
