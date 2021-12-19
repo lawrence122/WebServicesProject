@@ -40,7 +40,8 @@
             ]);
             
             $request = $this->s3->createPresignedRequest($cmd, '+5 minutes');
-            return "<a href='".(string)$request->getUri()."'>Download</a>";
+            return (string)$request->getUri();
+            // return "<a href='".(string)$request->getUri()."'>Download</a>";
         }
     }
 ?>
